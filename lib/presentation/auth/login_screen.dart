@@ -1,5 +1,6 @@
 import 'package:canarytemplate/core/components/custom_text_field.dart';
 import 'package:canarytemplate/core/components/spaces.dart';
+import 'package:canarytemplate/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -59,6 +60,28 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: Icon(Icons.email),
                 ), 
+              ),
+              const SpaceHeight(25),
+              CustomTextField(
+                validator: 'Password tidak boleh kosong',
+                controller: passwordController, 
+                label: 'password',
+                obscureText: !isShowPassword,
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(Icons.lock),
+                ),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isShowPassword = !isShowPassword;
+                    });
+                  }, 
+                  icon: Icon(
+                    isShowPassword ? Icons.visibility : Icons.visibility_off,
+                    color: AppColors.grey,
+                  )
+                ),
               )
             ],
           ),
