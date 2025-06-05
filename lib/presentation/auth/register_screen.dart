@@ -1,3 +1,6 @@
+import 'package:canarytemplate/core/components/custom_text_field.dart';
+import 'package:canarytemplate/core/components/spaces.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -33,6 +36,48 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Form(
+          key: _key,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SpaceHeight(100),
+                Text(
+                  'DAFTAR AKUN BARU',
+                  style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.width * 0.05,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SpaceHeight(30),
+                CustomTextField(
+                  validator: 'Username tidak boleh kosong',
+                  controller: namaController,
+                  label: 'Username',
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(Icons.person),
+                  ),
+                ),
+                const SpaceHeight(25),
+                CustomTextField(
+                  validator: 'Email tidak boleh kosong',
+                  controller: emailController,
+                  label: 'Email',
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(Icons.email),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
