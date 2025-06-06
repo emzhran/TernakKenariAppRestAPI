@@ -1,3 +1,4 @@
+import 'package:canarytemplate/core/components/spaces.dart';
 import 'package:canarytemplate/presentation/auth/login_screen.dart';
 import 'package:canarytemplate/presentation/bloc/get_all_burung_tersedia/bloc/getburungtersedia_bloc.dart';
 import 'package:canarytemplate/presentation/bloc/get_all_burung_tersedia/bloc/getburungtersedia_event.dart';
@@ -56,6 +57,41 @@ class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
             },
           ),
         ],
+      ),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          context.read<GetburungtersediaBloc>().add(
+            GetAllBurungTersediaEvent(),
+          );
+        },
+        child: Column(
+          children: [
+            const SpaceHeight(10),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                'Daftar Burung Tersedia',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SpaceHeight(10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Cari burung...',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  prefixIcon: const Icon(Icons.search),
+                ),
+                onChanged: (value) {
+
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
