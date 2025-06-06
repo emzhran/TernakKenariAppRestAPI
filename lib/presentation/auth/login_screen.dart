@@ -5,6 +5,8 @@ import 'package:canarytemplate/data/model/request/auth/login_request_model.dart'
 import 'package:canarytemplate/presentation/auth/bloc/login/login_bloc.dart';
 import 'package:canarytemplate/presentation/auth/bloc/login/login_event.dart';
 import 'package:canarytemplate/presentation/auth/bloc/login/login_state.dart';
+import 'package:canarytemplate/presentation/auth/register_screen.dart';
+import 'package:canarytemplate/presentation/buyer/profile/buyer_profile_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -108,10 +110,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text(state.responseModel.message!)),
                         );
-                        // context.pushAndRemoveUntil(
-                        //   const BuyerProfilScreen(),
-                        //   (route) => false,
-                        // );
+                        context.pushAndRemoveUntil(
+                          const BuyerProfileScreen(),
+                          (route) => false,
+                        );
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Role tidak dikenali')),
@@ -153,9 +155,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(color: AppColors.primary),
                         recognizer:
                             TapGestureRecognizer()
-                              // ..onTap = () {
-                              //   context.push(const RegisterScreen());
-                              // },
+                              ..onTap = () {
+                                context.push(const RegisterScreen());
+                              },
                       ),
                     ],
                   ),
