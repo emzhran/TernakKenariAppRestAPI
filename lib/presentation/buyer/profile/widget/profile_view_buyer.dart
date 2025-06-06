@@ -1,4 +1,6 @@
+import 'package:canarytemplate/core/core.dart';
 import 'package:canarytemplate/data/model/response/buyer/buyer_profile_response_model.dart';
+import 'package:canarytemplate/presentation/buyer/home/buyer_home_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileViewBuyer extends StatelessWidget {
@@ -36,10 +38,10 @@ class ProfileViewBuyer extends StatelessWidget {
             const SizedBox(height: 16),
             TextButton(
               onPressed: () {
-                // context.pushAndRemoveUntil(
-                //   const BuyerHomeScreen(),
-                //   (route) => false,
-                // );
+                context.pushAndRemoveUntil(
+                  const BuyerHomeScreen(),
+                  (route) => false,
+                );
               },
               child: const Text('Go to Home'),
             ),
